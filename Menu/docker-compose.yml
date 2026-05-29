@@ -1,0 +1,21 @@
+services:
+	db:
+		container_name: h2
+		image: oscarfonts/h2:latest
+		environment:
+			H2_USER: user
+			H2_PASSWORD: 
+		volumes:
+			- db:/data/oscarfonts/h2
+		ports:
+			- "8080:81"
+		networks:
+			- db
+		restart: unless-stopped
+			
+networks:
+	db:
+		driver: bridge
+					
+volumes:
+	db:
